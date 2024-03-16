@@ -37,7 +37,7 @@ export default function Home(props: PageProps) {
           height="128"
           alt="CK | ackr8.com"
         />
-        <h1 class="text-3xl font-bold">Welcome to <span class="text-sky-500">ST</span></h1>
+        <h1 class="text-3xl font-bold"> <span class="text-sky-500">ST</span> URL Shortner</h1>
         <p class="my-5 text-xl">
           A No Fuss URL Shortner
         </p>

@@ -79,3 +79,23 @@ export async function getShortsByUser(userLogin: string) {
   }
   return shorts;
 }
+
+export async function updateShortOriginalUrl(shortUrl: string, newOriginalUrl: string) {
+  const shortKey = ["shorts", shortUrl];
+  const existingShortResp = await kv.get<ShortEntity>(shortKey);
+  if (!existingShortResp || !existingShortResp.value) {
+    throw new Error(`Short URL not found: ${shortUrl}`);
+  }
+  const updatedShort: ShortEntity = {
+    ...existingShortResp.value,
+    originalUrl: newOriginalUrl,
+  };
+  const updateRes = await kv.atomic()
+    .set(shortKey, updatedShort)
+    .set(["shorts_by_user", updatedShort.userLogin, shortUrl], updatedShort)
+    .commit();
+
+  if (!updateRes.ok) {
+    throw new Error(`Failed to update original URL for short: ${shortUrl}`);
+  }
+}
