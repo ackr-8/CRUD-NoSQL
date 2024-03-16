@@ -1,0 +1,51 @@
+import IconCopy from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/copy.tsx";
+import { useState } from "preact/hooks";
+import { ShortEntity } from "../utils/db.ts";
+
+interface ShortProps {
+  short: ShortEntity,
+  hostname: string,
+}
+
+export default function Short({ short, hostname } : ShortProps) {
+  const [isView, setView] = useState<boolean>(false);
+  const onDelete = async () => {
+    await fetch("/account/myshorts", { method: "DELETE", credentials: "same-origin", body: JSON.stringify(short) });
+    window.location.reload();
+  }
+  return (
+    <>
+      <div class="flex items-center justify-between ">
+        <div class="flex items-center space-x-4">
+          <div>
+            <p class="text-sky-600 font-semibold">Short URL</p>
+            <p class="text-gray-600">{hostname}/s/{short.shortUrl}</p>
+          </div>
+          <button 
+          onClick={() => navigator.clipboard.writeText(`${hostname}/s/${short.shortUrl}`)}
+          class="text-sky-600 hover:text-sky-800 focus:outline-none">
+            <IconCopy class="w-6 h-6" />
+          </button>
+        </div>
+        <div>
+          <button onClick={() => setView(prevState => !prevState)} class="text-sky-600 hover:underline m-3">
+            View Original
+          </button>
+          |
+          <button onClick={() => onDelete()} class="text-sky-600 hover:underline m-3">
+            Delete
+          </button>
+        </div>
+      </div>
+
+      {isView ?
+        (
+          <div class="mt-4 bg-white text-black border border-gray-300 p-2 rounded-md whitespace-pre">
+            {short.originalUrl}
+          </div>
+        ) : (<span></span>)
+      }
+      
+    </>
+  );
+}
