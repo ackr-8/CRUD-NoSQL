@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import IconBrandGoogle from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/brand-google.tsx"
+import IconBrandGithub from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/brand-github.tsx"
 import { State } from "./_middleware.ts";
 import { newShort } from "../utils/helper.ts";
 
@@ -32,7 +32,7 @@ export default function Home(props: PageProps) {
       <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
         <img
           class="my-6"
-          src="/fav.png"
+          src="/logo.png"
           width="128"
           height="128"
           alt="CK | ackr8.com"
@@ -51,8 +51,8 @@ export default function Home(props: PageProps) {
             </>
           ) : (
             <a href="/signin" class="bg-sky-500 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded-md shadow-md flex items-center">
-              <IconBrandGoogle class="w-6 h-6 inline-block mr-2" />
-              Sign in with Google
+              Sign in with 
+              <IconBrandGithub class="w-6 h-6 ml-2" />
             </a>
           )
         }
