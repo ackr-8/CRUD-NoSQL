@@ -1,9 +1,3 @@
-import LemonIcon from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/lemon-2.tsx";
-
-interface NavbarProps {
-  sessionId?: string;
-}
-
 export function Navbar({ sessionId }: NavbarProps) {
   return (
     <header class="text-white font-medium">
@@ -11,7 +5,6 @@ export function Navbar({ sessionId }: NavbarProps) {
         <div class="flex h-16 items-center ">
           <div class="flex items-center flex-1">
             <a href="/" class="flex items-center">
-              {/* <LemonIcon /> */}
               <div class="ml-1">
               <span class="font-extrabold text-sky-500">Shorty</span>
               </div>
@@ -21,32 +14,35 @@ export function Navbar({ sessionId }: NavbarProps) {
           <div>
             <nav aria-label="Global">
               <ul class="flex items-center gap-6 text-sm">
-                { sessionId ?
-                  (
+                {sessionId ? (
                   <>
-                    <a
-                      class="font-bold transition hover:text-sky-500"
-                      href="/account/myshorts"
-                    >
-                      Shorts
-                    </a>
-                    <a
-                      class="transition hover:text-sky-500"
-                      href="/signout"
-                    >
-                      Sign Out
-                    </a>
+                    <li>
+                      <a
+                        class="font-bold transition hover:text-sky-500"
+                        href="/account/myshorts"
+                      >
+                        Shorts
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="transition hover:text-sky-500"
+                        href="/signout"
+                      >
+                        Sign Out
+                      </a>
+                    </li>
                   </>
-                  ) : (
+                ) : (
+                  <li>
                     <a
                       class="transition hover:text-sky-500"
                       href="/signin"
                     >
                       Sign In
                     </a>
-                  )
-                }
-                
+                  </li>
+                )}
               </ul>
             </nav>
           </div>
