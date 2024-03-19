@@ -13,7 +13,7 @@ export function Navbar({ sessionId }: NavbarProps) {
             <a href="/" class="flex items-center">
               {/* <LemonIcon /> */}
               <div class="ml-1">
-              <span class="font-extrabold text-sky-500">ST </span><span>URL Shortner</span>
+              <span class="font-extrabold text-sky-500">Shorty</span>
               </div>
             </a>
           </div>
