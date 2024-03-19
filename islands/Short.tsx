@@ -42,11 +42,11 @@ export default function Short({ short, hostname }: ShortProps) {
 
   return (
     <>
-      <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-4">
+      <div class="flex flex-wrap items-center justify-between">
+        <div class="flex items-center space-x-2 sm:space-x-4">
           <div>
             <p class="text-sky-600 font-semibold">Short URL</p>
-            <p class="text-gray-600">{hostname}/s/{short.shortUrl}</p>
+            <p class="text-gray-600 sm:text-sm">{hostname}/s/{short.shortUrl}</p>
           </div>
           <button
             onClick={() => navigator.clipboard.writeText(`${hostname}/s/${short.shortUrl}`)}
