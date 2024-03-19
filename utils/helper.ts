@@ -14,7 +14,7 @@ export async function newShort(orginalUrl: string | undefined, login: string) {
 
   const newShort: ShortEntity = {
     userLogin: login,
-    shortUrl: nanoid(11),
+    shortUrl: nanoid(4),
     originalUrl: orginalUrl!
   } 
   
