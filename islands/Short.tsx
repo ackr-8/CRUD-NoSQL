@@ -86,7 +86,7 @@ export default function Short({ short, hostname }: ShortProps) {
           onChange={(e) => setNewOriginalUrl(e.target.value)}
         />
       ) : (
-        <div class="mt-4 bg-white text-black border border-gray-300 p-2 rounded-md whitespace-pre">
+        <div class="mt-4 bg-white text-black border border-gray-300 p-2 rounded-md">
           {short.originalUrl}
         </div>
       )}
